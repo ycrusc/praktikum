@@ -23,12 +23,12 @@ class Welcome extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Wisata');
+		$this->load->model('WisataModel');
 	}
 
 	public function index()
 	{
-		$data['wisata'] = $this->Wisata->getAllWisata();
+		$data['wisata'] = $this->WisataModel->getAllWisata();
 		$this->load->view('welcome_message', $data);
 	}
 

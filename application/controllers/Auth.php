@@ -25,8 +25,6 @@ class Auth extends CI_Controller
    {
       $data['judul'] = 'Registration';
 
-      $this->load->view('auth/headerAuth', $data);
       $this->load->view('auth/registration');
-      $this->load->view('auth/footerAuth');
    }
 }

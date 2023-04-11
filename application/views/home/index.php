@@ -1,5 +1,5 @@
 <section class="default-banner active-blog-slider">
-	<div class="item-slider relative" style="background: url(asset/img/slider1.jpg); background-size: cover;">
+	<div class="item-slider relative" style="background: url(<?= base_url() ?>asset/img/slider1.jpg); background-size: cover;">
 		<div class="overlay" style="background: rgba(0,0,0,.3)"></div>
 		<div class="container">
 			<div class="row fullscreen justify-content-center align-items-center">
@@ -15,7 +15,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="item-slider relative" style="background: url(asset/img/slide.jpg);background-size: cover;">
+	<div class="item-slider relative" style="background: url(<?= base_url() ?>asset/img/slide.jpg);background-size: cover;">
 		<div class="overlay" style="background: rgba(0,0,0,.3)"></div>
 		<div class="container">
 			<div class="row fullscreen justify-content-center align-items-center">
@@ -31,7 +31,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="item-slider relative" style="background: url(asset/img/slider.jpg);background-size: cover;">
+	<div class="item-slider relative" style="background: url(<?= base_url() ?>asset/img/slider.jpg);background-size: cover;">
 		<div class="overlay" style="background: rgba(0,0,0,.3)"></div>
 		<div class="container">
 			<div class="row fullscreen justify-content-center align-items-center">
@@ -72,6 +72,7 @@
 		<?php endforeach; ?>
 	</div>
 </div>
+<?= $this->pagination->create_links(); ?>
 
 <!-- Start about Area -->
 <section class="section-gap info-area" id="about">
@@ -87,7 +88,7 @@
 		<div class="single-info row mt-40">
 			<div class="col-lg-6 col-md-12 mt-120 text-center no-padding info-left">
 				<div class="info-thumb">
-					<img src="<?= base_url()?>asset/img/alun2.jpg" class="img-fluid" alt="">
+					<img src="<?= base_url() ?>asset/img/alun2.jpg" class="img-fluid" alt="">
 				</div>
 			</div>
 			<div class="col-lg-6 col-md-12 no-padding info-rigth">
@@ -131,7 +132,7 @@
 		<div class="row justify-content-center d-flex">
 			<div class="active-works-carousel mt-40 col-lg-8">
 				<div class="item">
-					<img class="img-fluid" src="<?= base_url()?>asset/img/peta.jpg" alt="">
+					<img class="img-fluid" src="<?= base_url() ?>asset/img/peta.jpg" alt="">
 					<div class="caption text-center mt-20">
 						<h6 class="text-uppercase">Tentang Kabupaten Klaten</h6>
 						<p>
@@ -142,7 +143,7 @@
 					</div>
 				</div>
 				<div class="item">
-					<img class="img-fluid" src="<?= base_url()?>asset/img/sebarapem.jpg" alt="">
+					<img class="img-fluid" src="<?= base_url() ?>asset/img/sebarapem.jpg" alt="">
 					<div class="caption text-center mt-20">
 						<h6 class="text-uppercase">Tradisi Sebar Apem</h6>
 						<p>Di Klaten tepatnya di Jatinom ada tradisi sebar apem atau biasa disebut Yaqowiyu. Tradisi ini biasa dilakukan pada setiap bulan Sapar, bulan kedua penanggalan Jawa. Apem sendiri adalah kue berbentuk bundar yang terbuat dari tepung beras.
@@ -153,7 +154,7 @@
 					</div>
 				</div>
 				<div class="item">
-					<img class="img-fluid" src="<?= base_url()?>asset/img/candi.jpg" alt="">
+					<img class="img-fluid" src="<?= base_url() ?>asset/img/candi.jpg" alt="">
 					<div class="caption text-center mt-20">
 						<h6 class="text-uppercase">Kabupaten Seribu Candi</h6>
 						<p>Klaten memiliki destinasi wisata sejarah berupa candi yang terbilang cukup banyak. Di antaranya terdapat candi merak di Kecamatan Karangnongko, Candi Bubrah yang berada di Kecamatan Prambanan, Candi Plaosan yang juga terdapat di Kecamatan Prambanan, dan lainnya.
@@ -164,7 +165,7 @@
 					</div>
 				</div>
 				<div class="item">
-					<img class="img-fluid" src="<?= base_url()?>asset/img/lurik.jpg" alt="">
+					<img class="img-fluid" src="<?= base_url() ?>asset/img/lurik.jpg" alt="">
 					<div class="caption text-center mt-20">
 						<h6 class="text-uppercase">Kerajinan Kain Lurik</h6>
 						<p>Di Klaten ada Desa Wisata yang mengajak anda untuk mengenal Lurik. Destinasi wisata ini berada di Dukuh Cabean, Desa Mlese. Di sana, wisatawan dapat melihat detail proses pembuatan kain tenun lurik yang masih dikerjakan dengan alat tenun tradisional.
@@ -175,7 +176,7 @@
 					</div>
 				</div>
 				<div class="item">
-					<img class="img-fluid" src="<?= base_url()?>asset/img/payung.jpg" alt="">
+					<img class="img-fluid" src="<?= base_url() ?>asset/img/payung.jpg" alt="">
 					<div class="caption text-center mt-20">
 						<h6 class="text-uppercase">Payung Kertas Khas Juwiring</h6>
 						<p>Klaten punya kerjinan khas berupa payung kertas. Kerajinan ini biasa disebut Payung Juwiring. Nama Juwiring sendiri merupakan daerah tempat para pengrajin payung ini. Konon, payung ini dahulunya hanya digunakan untuk perlengkapan upacara kematian di desa setempat.
@@ -279,35 +280,35 @@
 <section class="gallery-area" id="gallery">
 	<div class="container-fluid">
 		<div class="row no-padding">
-		<div class="active-gallery">
-		<?php foreach ($wisata as $wst) : ?>
-			<div class="item single-gallery">
-					<img src="<?= base_url()?>asset/img/wisata/<?= $wst['ID']?>.jpg" style="height:200px" alt="">
-				</div>
-		<?php endforeach; ?>
-	</div>
+			<div class="active-gallery">
+				<?php foreach ($wisata as $wst) : ?>
+					<div class="item single-gallery">
+						<img src="<?= base_url() ?>asset/img/wisata/<?= $wst['ID'] ?>.jpg" style="height:200px" alt="">
+					</div>
+				<?php endforeach; ?>
+			</div>
 			<!-- <div class="active-gallery">
 				<div class="item single-gallery">
-					<img src="<?= base_url()?>asset/img/g1.jpg" alt="">
+					<img src="<?= base_url() ?>asset/img/g1.jpg" alt="">
 				</div>
 				<div class="item single-gallery">
-					<img src="<?= base_url()?>asset/img/g2.jpg" alt="">
+					<img src="<?= base_url() ?>asset/img/g2.jpg" alt="">
 				</div>
 				<div class="item single-gallery">
-					<img src="<?= base_url()?>asset/img/g3.jpg" alt="">
+					<img src="<?= base_url() ?>asset/img/g3.jpg" alt="">
 				</div>
 				<div class="item single-gallery">
-					<img src="<?= base_url()?>asset/img/g4.jpg" alt="">
+					<img src="<?= base_url() ?>asset/img/g4.jpg" alt="">
 				</div>
 				<div class="item single-gallery">
-					<img src="<?= base_url()?>asset/img/g5.jpg" alt="">
+					<img src="<?= base_url() ?>asset/img/g5.jpg" alt="">
 				</div>
 				<div class="item single-gallery">
-					<img src="<?= base_url()?>asset/img/g6.jpg" alt="">
+					<img src="<?= base_url() ?>asset/img/g6.jpg" alt="">
 				</div>
 			</div>-->
 		</div>
-	</div> 
+	</div>
 </section>
 <!-- End gallery Area -->
 
@@ -381,7 +382,7 @@ End faq Area -->
 	</div>
 	<div class="container">
 		<div class="video-content">
-			<a href="https://www.youtube.com/watch?v=ZgG7Qrn445s" class="play-btn"><img src="<?php echo base_url()?>asset/img/play-btn.png" alt=""></a>
+			<a href="https://www.youtube.com/watch?v=ZgG7Qrn445s" class="play-btn"><img src="<?php echo base_url() ?>asset/img/play-btn.png" alt=""></a>
 			<div class="video-desc">
 				<h3 class="h2 text-white text-uppercase">Being unique is the preference</h3>
 				<h4 class="text-white">Youtube video will appear in popover</h4>

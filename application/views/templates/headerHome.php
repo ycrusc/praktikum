@@ -29,23 +29,30 @@
 </head>
 
 <body>
-	<!-- Start Header Area -->
-	<header class="default-header">
-		<nav class="navbar navbar-expand-lg">
-			<div class="container">
-				<a class="navbar-brand text-white" href="index.html">
-					KLATEN
-				</a>
-				<div class=" justify-content-end align-items-center">
-					<ul class="navbar-nav">
-						<li><a href="<?= base_url() ?>home">Home</a></li>
-						<li><a href="<?= base_url() ?>wisata">Wisata</a></li>
-						<li><a href="#gallery">Sejarah</a></li>
-						<li><a href="#faq">About</a></li>
-						<li><a href="#contact">Contact</a></li>
-						<li><a href="<?= base_url() ?>auth">Login</a></li>
-					</ul>
+	<!-- start banner Area -->
+	<section class="banner-area" id="home">
+		<!-- Start Header Area -->
+		<header class="default-header">
+			<nav class="navbar navbar-expand">
+				<div class="container">
+					<a class="navbar-brand text-white" href="index.html">
+						KLATEN
+					</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="text-white lnr lnr-menu"></span>
+					</button>
+					<div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
+						<ul class="navbar-nav">
+							<li><a href="<?= base_url() ?>home">Home</a></li>
+							<li><a href="<?= base_url() ?>wisata">Wisata</a></li>
+							<li><a href="#gallery">Sejarah</a></li>
+							<li><a href="#faq">About</a></li>
+							<li><a href="#contact">Contact</a></li>
+							<li><a href="<?= base_url() ?>auth">Login</a></li>
+						</ul>
+					</div>
 				</div>
-			</div>
-		</nav>
-	</header>
+			</nav>
+		</header>
+		<!-- End Header Area -->
+	</section>
