@@ -9,12 +9,14 @@ class Home extends CI_Controller
    {
       parent::__construct();
       $this->load->model('WisataModel');
+      $this->load->library('session');
    }
 
 
    public function index()
    {
       $data['judul'] = 'Halaman Home';
+      $data['email'] = $this->session->userdata('email');
 
 
 
@@ -58,6 +60,6 @@ class Home extends CI_Controller
 
       $this->load->view('templates/headerHome', $data);
       $this->load->view('home/index', $data);
-      $this->load->view('templates/footer');
+      $this->load->view('templates/footerHome');
    }
 }

@@ -19,31 +19,42 @@
 
 	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 	<!-- CSS -->
-	<link rel="stylesheet" href="<?= base_url() ?>asset/css/linearicons.css">
-	<link rel="stylesheet" href="<?= base_url() ?>asset/css/font-awesome.min.css">
-	<link rel="stylesheet" href="<?= base_url() ?>asset/css/bootstrap.css">
-	<link rel="stylesheet" href="<?= base_url() ?>asset/css/magnific-popup.css">
-	<link rel="stylesheet" href="<?= base_url() ?>asset/css/animate.min.css">
-	<link rel="stylesheet" href="<?= base_url() ?>asset/css/owl.carousel.css">
-	<link rel="stylesheet" href="<?= base_url() ?>asset/css/main.css">
+	<link rel="stylesheet" href="<?= base_url() ?>asset/assetregister/css/linearicons.css">
+	<link rel="stylesheet" href="<?= base_url() ?>asset/assetregister/css/font-awesome.min.css">
+	<link rel="stylesheet" href="<?= base_url() ?>asset/assetregister/css/bootstrap.css">
+	<link rel="stylesheet" href="<?= base_url() ?>asset/assetregister/css/magnific-popup.css">
+	<link rel="stylesheet" href="<?= base_url() ?>asset/assetregister/css/animate.min.css">
+	<link rel="stylesheet" href="<?= base_url() ?>asset/assetregister/css/owl.carousel.css">
+	<link rel="stylesheet" href="<?= base_url() ?>asset/assetregister/css/main.css">
+	<link rel="stylesheet" href="<?= base_url() ?>asset/assetregister/css/contact.css">
 </head>
+
 
 <body>
 	<!-- Start Header Area -->
 	<header class="default-header">
-		<nav class="navbar navbar-expand-lg">
+		<nav class="navbar sticky-top top-0 navbar-expand-lg bg-secondary shadow">
 			<div class="container">
-				<a class="navbar-brand text-white" href="index.html">
-					KLATEN
+				<a class="navbar-brand" href="index.html">
+					<img src="<?= base_url() ?>asset/img/logo.png" width="70" height="30" alt="">
 				</a>
-				<div class=" justify-content-end align-items-center">
-					<ul class="navbar-nav">
-						<li><a href="<?= base_url() ?>home">Home</a></li>
-						<li><a href="<?= base_url() ?>wisata">Wisata</a></li>
-						<li><a href="#gallery">Sejarah</a></li>
-						<li><a href="#faq">About</a></li>
-						<li><a href="#contact">Contact</a></li>
-						<li><a href="<?= base_url() ?>auth">Login</a></li>
+				<a class="navbar-brand text-white" href="<?= base_url() ?>home">
+					the shine of JAVA
+				</a>
+				<button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarToggler">
+					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+						<li class="nav-item"><a class="navbar-brand text-white" href="<?= base_url() ?>home">Home</a></li>
+						<li class="nav-item"><a class="navbar-brand text-white" href="<?= base_url() ?>wisata">Wisata</a></li>
+						<li class="nav-item"><a class="navbar-brand text-white" href="<?= base_url() ?>event">Event</a></li>
+						<li class="nav-item"><a class="navbar-brand text-white" href="<?= base_url() ?>contact">Contact</a></li>
+						<?php if ($email) : ?>
+							<li class="nav-item"><a class="navbar-brand text-white" href="<?= base_url() ?>user">Dashboard</a></li>
+						<?php else : ?>
+							<li class="nav-item"><a class="navbar-brand text-white" href="<?= base_url() ?>auth">Login</a></li>
+						<?php endif; ?>
 					</ul>
 				</div>
 			</div>

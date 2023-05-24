@@ -7,9 +7,7 @@
 					<div class="banner-content text-center">
 						<h4 class="text-white mb-20 text-uppercase">The Shine Of Java</h4>
 						<h1 class="text-uppercase text-white">New Adventure</h1>
-						<p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp <br>
-							or incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</p>
-						<a href="#" class="text-uppercase header-btn">Discover Now</a>
+						<a href="<?= base_url() ?>wisata" class="text-uppercase header-btn">Discover Now</a>
 					</div>
 				</div>
 			</div>
@@ -23,9 +21,7 @@
 					<div class="banner-content text-center">
 						<h4 class="text-white mb-20 text-uppercase">The Shine Of Java</h4>
 						<h1 class="text-uppercase text-white">New Trip</h1>
-						<p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp <br>
-							or incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</p>
-						<a href="#" class="text-uppercase header-btn">Discover Now</a>
+						<a href="<?= base_url() ?>wisata" class="text-uppercase header-btn">Discover Now</a>
 					</div>
 				</div>
 			</div>
@@ -37,11 +33,9 @@
 			<div class="row fullscreen justify-content-center align-items-center">
 				<div class="col-md-10 col-12">
 					<div class="banner-content text-center">
-						<h4 class="text-white mb-20 text-uppercase">Discover the Colorful World</h4>
+						<h4 class="text-white mb-20 text-uppercase">The Shine Of Java</h4>
 						<h1 class="text-uppercase text-white">New Experience</h1>
-						<p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp <br>
-							or incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</p>
-						<a href="#" class="text-uppercase header-btn">Discover Now</a>
+						<a href="<?= base_url() ?>wisata" class="text-uppercase header-btn">Discover Now</a>
 					</div>
 				</div>
 			</div>

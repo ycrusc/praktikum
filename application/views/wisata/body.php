@@ -1,5 +1,5 @@
 <div class="container mt-5">
-    <h1>Daftar Wisata</h1>
+    <h1>Daftar Wisata Di Kabupaten Klaten</h1>
     <!-- <div class="row mt-3">
 		<div class="col-md-6">
 			

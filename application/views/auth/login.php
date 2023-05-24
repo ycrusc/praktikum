@@ -1,41 +1,78 @@
-    <div class="limiter">
-        <div class="container-login100">
-            <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-                <form class="login100-form validate-form">
-                    <span class="login100-form-title p-b-49">
-                        Login
-                    </span>
+<!DOCTYPE html>
+<html lang="en">
 
-                    <div class="wrap-input100 validate-input m-b-23" data-validate="Username is required">
-                        <span class="label-input100">Username</span>
-                        <input class="input100" type="text" name="username" placeholder="Type your username">
-                        <span class="focus-input100" data-symbol="&#xf206;"></span>
-                    </div>
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
 
-                    <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <span class="label-input100">Password</span>
-                        <input class="input100" type="password" name="pass" placeholder="Type your password">
-                        <span class="focus-input100" data-symbol="&#xf190;"></span>
-                    </div>
-                    <div class="container-login100-form-btn mt-3">
-                        <div class="wrap-login100-form-btn">
-                            <div class="login100-form-bgbtn"></div>
-                            <button type="submit" class="login100-form-btn">
-                                Login
-                            </button>
+    <!-- Title Page-->
+    <title><?= $judul; ?></title>
+
+    <!-- Icons font CSS-->
+    <link href="<?= base_url("asset/assetregister/") ?>vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="<?= base_url("asset/assetregister/") ?>vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="<?= base_url("asset/assetregister/") ?>vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="<?= base_url("asset/assetregister/") ?>vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="<?= base_url("asset/assetregister/") ?>css/main.css" rel="stylesheet" media="all">
+</head>
+
+<body>
+    <div class="page-wrapper p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+                    <h2 class="title">Login</h2>
+
+                    <?= $this->session->flashdata('message'); ?>
+                    <form method="POST" action="<?= base_url('auth'); ?>">
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Email</label>
+                                    <input class="input--style-4" type="text" name="email" value="<?= set_value('email'); ?>">
+                                    <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Password</label>
+                                    <input class="input--style-4" type="text" name="password">
+                                    <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="container">
-                        <div class="flex-col-c p-t-155">
-                            <a href="<?= base_url() ?>home" class="txt2">
-                                Kembali
-                            </a>
-                            <a href="<?= base_url() ?>auth/registration" class="txt2">
-                                Sign Up
-                            </a>
+                        <div class="p-t-15 ">
+                            <button class="btn btn--radius-2 btn--blue mx-auto" type="submit">Login</button>
+                            <a class="btn btn--radius-2 btn--green mx-auto" href="<?= base_url() ?>auth/registration">Daftar</a>
+                            <a class="btn btn--radius-2 btn--blue mx-auto" href="<?= base_url() ?>home">Home</a>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
+
+    <!-- Jquery JS-->
+    <script src="<?= base_url("asset/assetregister/") ?>vendor/jquery/jquery.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="<?= base_url("asset/assetregister/") ?>vendor/select2/select2.min.js"></script>
+    <script src="<?= base_url("asset/assetregister/") ?>vendor/datepicker/moment.min.js"></script>
+    <script src="<?= base_url("asset/assetregister/") ?>vendor/datepicker/daterangepicker.js"></script>
+
+    <!-- Main JS-->
+    <script src="<?= base_url("asset/assetregister/") ?>js/global.js"></script>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
+<!-- end document-->

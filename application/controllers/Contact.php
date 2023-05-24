@@ -1,6 +1,6 @@
 <?php
 
-class Wisata extends CI_Controller
+class Contact extends CI_Controller
 {
 
    public function __construct()
@@ -13,13 +13,11 @@ class Wisata extends CI_Controller
 
    public function index()
    {
-      $data['judul'] = 'Wisata';
-      $data['wisata'] = $this->WisataModel->getAllWisata();
+      $data['judul'] = 'Contact Us';
       $data['email'] = $this->session->userdata('email');
 
-
       $this->load->view('templates/header', $data);
-      $this->load->view('wisata/body', $data);
+      $this->load->view('contact/body', $data);
       $this->load->view('templates/footer');
    }
 }

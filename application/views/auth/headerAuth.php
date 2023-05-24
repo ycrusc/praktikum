@@ -26,6 +26,7 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>asset/assetlogin/css/util.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>asset/assetlogin/css/main.css">
+    <link rel="stylesheet" href="<?= base_url() ?>asset/assetregister/css/contact.css">
     <!--===============================================================================================-->
 </head>
 

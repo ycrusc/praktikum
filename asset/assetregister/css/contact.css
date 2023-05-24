@@ -1,0 +1,18 @@
+body {
+    background-color: gainsboro;
+}
+
+
+.badan {
+    background-color: white;
+    padding: 13px 0;
+    margin-top: 30px;
+}
+
+.peding-100 {
+    padding: 120px;
+}
+
+.peding-30 {
+    padding: 30px;
+}

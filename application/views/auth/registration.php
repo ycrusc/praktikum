@@ -10,7 +10,7 @@
     <meta name="keywords" content="Colorlib Templates">
 
     <!-- Title Page-->
-    <title>Au Register Forms by Colorlib</title>
+    <title><?= $judul; ?></title>
 
     <!-- Icons font CSS-->
     <link href="<?= base_url("asset/assetregister/") ?>vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -32,22 +32,24 @@
             <div class="card card-4">
                 <div class="card-body">
                     <h2 class="title">Registration Form</h2>
-                    <form method="POST">
+                    <form method="POST" action="<?= base_url('auth/registration'); ?>">
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">full name</label>
-                                    <input class="input--style-4" type="text" name="first_name">
+                                    <input class="input--style-4" type="text" name="full_name" value="<?= set_value('full_name'); ?>">
+                                    <?= form_error('full_name', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">user name</label>
-                                    <input class="input--style-4" type="text" name="last_name">
+                                    <input class="input--style-4" type="text" name="user_name" value="<?= set_value('user_name'); ?>">
+                                    <?= form_error('user_name', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                             </div>
                         </div>
-                        <div class="row row-space">
+                        <!-- <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Birthday</label>
@@ -72,18 +74,20 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Email</label>
-                                    <input class="input--style-4" type="text" name="email">
+                                    <input class="input--style-4" type="text" name="email" value="<?= set_value('email'); ?>">
+                                    <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Phone Number</label>
-                                    <input class="input--style-4" type="text" name="phone">
+                                    <input class="input--style-4" type="text" name="phone" value="<?= set_value('phone'); ?>">
+                                    <?= form_error('phone', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                             </div>
                         </div>
@@ -91,7 +95,8 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Password</label>
-                                    <input class="input--style-4" type="text" name="password">
+                                    <input class="input--style-4" type="text" name="password1">
+                                    <?= form_error('password1', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                             </div>
                             <div class="col-2">

@@ -35,8 +35,11 @@
 		<header class="default-header">
 			<nav class="navbar navbar-expand">
 				<div class="container">
-					<a class="navbar-brand text-white" href="index.html">
-						KLATEN
+					<a class="navbar-brand" href="#">
+						<img src="<?= base_url() ?>asset/img/logo.png" width="70" height="30" alt="">
+					</a>
+					<a class="navbar-brand text-white" href="<?= base_url() ?>home">
+						the shine of JAVA
 					</a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="text-white lnr lnr-menu"></span>
@@ -45,10 +48,13 @@
 						<ul class="navbar-nav">
 							<li><a href="<?= base_url() ?>home">Home</a></li>
 							<li><a href="<?= base_url() ?>wisata">Wisata</a></li>
-							<li><a href="#gallery">Sejarah</a></li>
-							<li><a href="#faq">About</a></li>
-							<li><a href="#contact">Contact</a></li>
-							<li><a href="<?= base_url() ?>auth">Login</a></li>
+							<li><a href="<?= base_url() ?>event">Event</a></li>
+							<li><a href="<?= base_url() ?>contact">Contact</a></li>
+							<?php if ($email) : ?>
+								<li><a href="<?= base_url() ?>user">Dashboard</a></li>
+							<?php else : ?>
+								<li><a href="<?= base_url() ?>auth">Login</a></li>
+							<?php endif; ?>
 						</ul>
 					</div>
 				</div>

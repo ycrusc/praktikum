@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------
@@ -77,7 +77,7 @@ $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => '(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1520))  (CONNECT_DATA =(SID =XE)))',
 	'username' => 'WISATA_KLATEN',
-	'password' => 'root',
+	'password' => 'oracle',
 	'database' => '',
 	'dbdriver' => 'oci8',
 	'dbprefix' => '',
