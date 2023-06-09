@@ -44,7 +44,7 @@ class Auth extends CI_Controller
                   'role_id' => $user['ROLE_ID']
                ];
                $this->session->set_userdata($data);
-               redirect('user');
+               redirect('admin');
             } else {
                $this->session->set_flashdata('message', '<div class="alert alert-danger" 
                      role="alert"> Password Salah</div>');
@@ -66,8 +66,9 @@ class Auth extends CI_Controller
    public function registration()
    {
 
-      $config['total_users'] = $this->UserModel->getCountAllUsers();
-
+      /**
+       * Set Form Validation Rule for Registration
+       */
       $this->form_validation->set_rules('full_name', 'Name', 'required|trim');
       $this->form_validation->set_rules('user_name', 'userName', 'required|trim|is_unique[USERS.USER_NAME]', [
          'is_unique' => 'This username has already exist'
@@ -87,30 +88,42 @@ class Auth extends CI_Controller
       );
       $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
 
+      /**
+       * Save Registration Input from Form to DataBase
+       */
       if ($this->form_validation->run() == false) {
          $data['judul'] = 'Registration';
          $this->load->view('auth/registration', $data);
       } else {
-         $date = date_create();
-         $now = date_format($date, "Y-m-d H:i:s");
-         $timestamp = strtotime($now);
-         $data = [
-            'ID' => $config['total_users'],
-            'PASSWORD' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
-            'USER_NAME' => htmlspecialchars($this->input->post('user_name', true)),
-            'FULL_NAME' => htmlspecialchars($this->input->post('full_name', true)),
-            'PHONE_NUMBER' => $this->input->post('phone'),
-            'E_MAIL' => htmlspecialchars($this->input->post('email', true)),
-            'IS_ACTIVE' => 1,
-            'ROLE_ID' => 4,
-         ];
-         $this->db->insert('USERS', $data);
-         $this->session->set_flashdata('message', '<div class="alert alert-success" 
-         role="alert"> Data Berhasil Ditambah. Silahkan Login</div>');
-         redirect('auth');
+
+         $this->saveUser();
       }
    }
 
+   private function saveUser()
+   {
+
+      $config['total_users'] = $this->UserModel->getCountAllUsers();
+      $data = [
+         'ID' => $config['total_users'] + 1,
+         'PASSWORD' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
+         'USER_NAME' => htmlspecialchars($this->input->post('user_name', true)),
+         'FULL_NAME' => htmlspecialchars($this->input->post('full_name', true)),
+         'PHONE_NUMBER' => $this->input->post('phone'),
+         'E_MAIL' => htmlspecialchars($this->input->post('email', true)),
+         'IS_ACTIVE' => 1,
+         'ROLE_ID' => 4,
+      ];
+      $this->db->insert('USERS', $data);
+      $this->session->set_flashdata('message', '<div class="alert alert-success" 
+      role="alert"> Data Berhasil Ditambah. Silahkan Login</div>');
+      redirect('auth');
+   }
+
+   /**
+    * Logout and Delete Session Data
+    * Return to Login Page
+    */
    public function logout()
    {
       $this->session->unset_userdata('email');
