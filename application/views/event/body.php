@@ -17,7 +17,7 @@
                     <a href="">
                         <h3 class="mb-0"><?= $evnt['EVENT_TITLE'] ?></h3>
                     </a>
-                    <div class="meta"><img class="img-baseline" src="<?= base_url() ?>asset/img/calendar.png" height="12" alt="posted-at"> <?= $evnt['EVENT_DATE'] ?></div>
+                    <div class="meta"><img class="img-baseline" src="<?= base_url() ?>asset/img/calendar.png" height="12" alt="posted-at"> <?= date('d F Y', $evnt['EVENT_DATE']) ?></div>
                     <p class="text-justify"><?= $evnt['DESCRIPTION'] ?></p>
                     <div class="meta"><img class="img-baseline" src="<?= base_url() ?>asset/img/place.png" height="15" alt="wisata"><em><a href="#"> Lokasi Wisata</a>,
                             <img class="img-baseline img-ml" src="<?= base_url() ?>asset/img/calendar.png" height="15" alt="pengirim"><em><a href="#"> Create at </a>,

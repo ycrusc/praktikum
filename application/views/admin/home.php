@@ -1,5 +1,5 @@
 <div id="layoutSidenav_content">
-    <div class="col-12 col-xl-9">
+    <div class="col-20 col-xl-13">
         <div class="nav">
             <div class="d-flex justify-content-between align-items-center w-100 mb-3 mb-md-0">
                 <div class="d-flex justify-content-between align-items-center w-100">
@@ -23,16 +23,16 @@
                 <div class="col-12">
                     <ul class="nav nav-tabs d-flex justify-content-start align-items-center" id="tableTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" type="button" role="tab" aria-controls="all" aria-selected="true">All Trx</button>
+                            <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" type="button" role="tab" aria-controls="all" aria-selected="true">Wisata</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="success-tab" data-bs-toggle="tab" data-bs-target="#success" type="button" role="tab" aria-controls="success" aria-selected="false">Success</button>
+                            <button class="nav-link" id="success-tab" data-bs-toggle="tab" data-bs-target="#success" type="button" role="tab" aria-controls="success" aria-selected="false">Events</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pending-tab" data-bs-toggle="tab" data-bs-target="#pending" type="button" role="tab" aria-controls="pending" aria-selected="false">Pending</button>
+                            <button class="nav-link" id="pending-tab" data-bs-toggle="tab" data-bs-target="#pending" type="button" role="tab" aria-controls="pending" aria-selected="false">Users</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="failed-tab" data-bs-toggle="tab" data-bs-target="#failed" type="button" role="tab" aria-controls="failed" aria-selected="false">Failed</button>
+                            <button class="nav-link" id="failed-tab" data-bs-toggle="tab" data-bs-target="#failed" type="button" role="tab" aria-controls="failed" aria-selected="false">Messages</button>
                         </li>
                     </ul>
                     <div class="tab-content" id="tableTabContent">
@@ -41,70 +41,146 @@
                                 <table class="table table-borderless transaction-table w-100 active" id="table-all">
                                     <thead>
                                         <tr>
-                                            <th>Item</th>
-                                            <th>Total</th>
-                                            <th>Price</th>
+                                            <th>Wisata</th>
+                                            <th>Kapasitas Pengunjung</th>
+                                            <th>Tiket Masuk</th>
                                             <th class="status-header">Status</th>
                                             <th class="action-header">Action</th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
-                                                    <img class="transaction-img" src="./assets/img/home/tehsariwangi.jpg" alt="" />
-
-                                                    <div class="d-flex flex-column justify-content-center align-items-start mt-2">
-                                                        <h5 class="transaction-game">Teh Sariwangi</h5>
-                                                        <h5 class="transaction-type">Sembako</h5>
+                                        <?php foreach ($wisata as $w) : ?>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
+                                                        <!-- <img class="transaction-img" src="./assets/img/home/tehsariwangi.jpg" alt="" /> -->
+                                                        <div class="d-flex flex-column justify-content-center align-items-start mt-2">
+                                                            <h5 class="transaction-game"><?= $w['NAME'] ?></h5>
+                                                            <!-- <h5 class="transaction-type">Sembako</h5> -->
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            <td>1 pcs</td>
-                                            <td>Rp 6.900</td>
-                                            <td class="status">
-                                                <span class="pending w-auto d-flex justify-content-center align-self-center">Pending</span>
-                                            </td>
-                                            <td class="action"><button class="btn-transaction mx-auto">Details</button></td>
+                                                </td>
+                                                <td><?= $w['QUOTA'] ?></td>
+                                                <td><?= $w['TICKET_PRICE'] ?></td>
+                                                <td class="status">
+                                                    <span class="pending w-auto d-flex justify-content-center align-self-center"><?= $w['STATUS'] ?></span>
+                                                </td>
+                                                <td class="action"><button class="btn-transaction mx-auto">Details</button></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="success" role="tabpanel" aria-labelledby="success-tab">
+                            <div class="table-responsive">
+                                <table class="table table-borderless transaction-table w-100" id="table-success">
+                                    <thead>
+                                        <tr>
+                                            <th>Events</th>
+                                            <th>Tanggal</th>
+                                            <th>Kapasitas Pengunjung</th>
+                                            <th class="status-header">Status</th>
+                                            <th class="action-header">Action</th>
                                         </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <?php foreach ($event as $ev) : ?>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
+                                                        <!-- <img class="transaction-img" src="./assets/img/home/indomie_aceh.jpg" alt="" /> -->
+                                                        <div class="d-flex flex-column justify-content-center align-items-start mt-2">
+                                                            <h5 class="transaction-game"><?= $ev['EVENT_TITLE'] ?></h5>
+                                                            <!-- <h5 class="transaction-type">Makanan Instan</h5> -->
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td><?= date('d F Y', $ev['EVENT_DATE']) ?></td>
+                                                <td><?= $ev['QUOTA'] ?></td>
+                                                <td class="status">
+                                                    <span class="failed w-auto d-flex justify-content-center align-self-center"><?= $ev['STATUS'] ?></span>
+                                                </td>
+                                                <td class="action"><button class="btn-transaction mx-auto">Details</button></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pending-tab">
+                            <div class="table-responsive">
+                                <table class="table table-borderless transaction-table w-100" id="table-pending">
+                                    <thead>
+                                        <tr>
+                                            <th>Nama</th>
+                                            <th>Email</th>
+                                            <th>Role</th>
+                                            <th class="status-header">Status</th>
+                                            <th class="action-header">Action</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <?php foreach ($user as $usr) : ?>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
+                                                        <!-- <img class="transaction-img" src="./assets/img/home/indomie_aceh.jpg" alt="" /> -->
+                                                        <div class="d-flex flex-column justify-content-center align-items-start mt-2">
+                                                            <h5 class="transaction-game"><?= $usr['FULL_NAME'] ?></h5>
+                                                            <h5 class="transaction-type"><?= $usr['DESCRIPTION'] ?></h5>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td><?= $usr['USER_NAME'] ?></td>
+                                                <td><?= $usr['E_MAIL'] ?></td>
+                                                <td class="status">
+                                                    <span class="failed w-auto d-flex justify-content-center align-self-center"><?= $usr['STATUS'] ?></span>
+                                                </td>
+                                                <td class="action"><button class="btn-transaction mx-auto">Details</button></td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
 
                         <div class="tab-pane fade" id="failed" role="tabpanel" aria-labelledby="failed-tab">
-                            <div class="table-responsive">
+                            <div class="table-responsive-sm">
                                 <table class="table table-borderless transaction-table w-100" id="table-failed">
                                     <thead>
                                         <tr>
-                                            <th>Game</th>
-                                            <th>Item</th>
-                                            <th>Price</th>
-                                            <th class="status-header">Status</th>
+                                            <th>Pesan</th>
+                                            <th>Tanggal Input</th>
+                                            <th>Nama</th>
+                                            <th>Email</th>
                                             <th class="action-header">Action</th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
-                                                    <img class="transaction-img" src="./assets/img/home/indomie_aceh.jpg" alt="" />
-
-                                                    <div class="d-flex flex-column justify-content-center align-items-start mt-2">
-                                                        <h5 class="transaction-game">Indomie Goreng Aceh</h5>
-                                                        <h5 class="transaction-type">Makanan Instan</h5>
+                                        <?php foreach ($pesan as $psn) : ?>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex flex-column flex-md-row justify-content-start align-items-start align-items-md-center">
+                                                        <!-- <img class="transaction-img" src="./assets/img/home/indomie_aceh.jpg" alt="" /> -->
+                                                        <div class="d-flex flex-column justify-content-center align-items-start mt-2">
+                                                            <h5 class="transaction-game"><?= $psn['PESAN'] ?></h5>
+                                                            <!-- <h5 class="transaction-type">Makanan Instan</h5> -->
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            <td>5 pcs</td>
-                                            <td>Rp 15.000</td>
-                                            <td class="status">
-                                                <span class="failed w-auto d-flex justify-content-center align-self-center">Failed</span>
-                                            </td>
-                                            <td class="action"><button class="btn-transaction mx-auto">Details</button></td>
-                                        </tr>
+                                                </td>
+                                                <td><?= $psn['CREATE_AT'] ?></td>
+                                                <td><?= $psn['USER_NAME'] ?></td>
+                                                <td><?= $psn['E_MAIL'] ?></td>
+                                                <td class="action"><button class="btn-transaction mx-auto">Details</button></td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>

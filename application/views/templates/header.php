@@ -51,7 +51,7 @@
 						<li class="nav-item"><a class="navbar-brand text-white" href="<?= base_url() ?>event">Event</a></li>
 						<li class="nav-item"><a class="navbar-brand text-white" href="<?= base_url() ?>contact">Contact</a></li>
 						<?php if ($email) : ?>
-							<li class="nav-item"><a class="navbar-brand text-white" href="<?= base_url() ?>user">Dashboard</a></li>
+							<li class="nav-item"><a class="navbar-brand text-white" href="<?= base_url() ?>admin">Dashboard</a></li>
 						<?php else : ?>
 							<li class="nav-item"><a class="navbar-brand text-white" href="<?= base_url() ?>auth">Login</a></li>
 						<?php endif; ?>

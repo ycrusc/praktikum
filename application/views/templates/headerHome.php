@@ -51,7 +51,7 @@
 							<li><a href="<?= base_url() ?>event">Event</a></li>
 							<li><a href="<?= base_url() ?>contact">Contact</a></li>
 							<?php if ($email) : ?>
-								<li><a href="<?= base_url() ?>user">Dashboard</a></li>
+								<li><a href="<?= base_url() ?>admin">Dashboard</a></li>
 							<?php else : ?>
 								<li><a href="<?= base_url() ?>auth">Login</a></li>
 							<?php endif; ?>
