@@ -120,59 +120,6 @@ class Auth extends CI_Controller
       redirect('auth');
    }
 
-   public function delete($id)
-   {
-      // $user = $this->UserModel->getDetailById($id);
-      // if ($user > 0) {
-      $isDelete = $this->UserModel->deleteUser($id);
-      if ($isDelete) {
-         $this->session->set_flashdata('delete', '<div class="alert alert-success" 
-               role="alert">Data Berhasil dihapus</div>');
-         redirect('admin/user');
-      }
-      $this->session->set_flashdata('delete', '<div class="alert alert-danger" 
-            role="alert">Data gagal dihapus</div>');
-      redirect('admin/user');
-      // }
-      // $this->session->set_flashdata('delete', '<div class="alert alert-success" 
-      // role="alert">Data Tidak Ada</div>');
-      // redirect('admin/user');
-   }
-
-   public function add()
-   {
-      /**
-       * Set Form Validation Rule for Registration
-       */
-      $this->form_validation->set_rules('full_name', 'Name', 'required|trim');
-      $this->form_validation->set_rules('user_name', 'userName', 'required|trim|is_unique[USERS.USER_NAME]', [
-         'is_unique' => 'This username has already exist'
-      ]);
-      $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[USERS.E_MAIL]', [
-         'is_unique' => 'This email has already registred'
-      ]);
-      $this->form_validation->set_rules('phone', 'Phone', 'required|regex_match[/^[0-9]{10,12}$/]');
-      $this->form_validation->set_rules(
-         'password1',
-         'Password',
-         'required|trim|min_length[6]|matches[password2]',
-         [
-            'matches' => 'Password dont match!',
-            'min_length' => 'Password to short!'
-         ]
-      );
-      $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
-
-      /**
-       * Save Registration Input from Form to DataBase
-       */
-      if ($this->form_validation->run() == false) {
-         redirect('admin/user');
-      } else {
-
-         $this->saveUser();
-      }
-   }
 
    /**
     * Logout and Delete Session Data
