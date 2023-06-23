@@ -7,10 +7,16 @@ class admin extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->library('session');
+        // is_logged_in();
+        $email = $this->session->userdata('email');
+        if (!$email) {
+            redirect('auth');
+        }
+
         $this->load->model('WisataModel');
         $this->load->model('EventModel');
         $this->load->model('UserModel');
+        $this->load->model('RoleModel');
         $this->load->model('ContactModel');
         $this->load->library('form_validation');
     }
@@ -34,6 +40,7 @@ class admin extends CI_Controller
         $data['login'] = $this->db->get_where('USERS', ['E_MAIL' => $this->session->userdata('email')])->row_array();
         $data['role'] = $this->db->get_where('ROLE', ['ID' => $this->session->userdata('role_id')])->row_array();
         $data['user'] = $this->UserModel->getAllUsersOverview();
+        $data['allRole'] = $this->RoleModel->getAllRoles();
 
         $this->load->view('admin/headerAdmin', $data);
         $this->load->view('admin/user', $data);

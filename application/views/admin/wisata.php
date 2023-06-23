@@ -10,7 +10,10 @@
                 </div>
             </div>
         </div>
-
+        <?= $this->session->flashdata('message'); ?>
+        <?= $this->session->flashdata('delete'); ?>
+        <?= $this->session->flashdata('edit'); ?>
+        <?= $this->session->flashdata('failled'); ?>
         <div class="content">
             <div class="row">
                 <div class="col-12">
@@ -37,7 +40,6 @@
                                                         <!-- <img class="transaction-img" src="./assets/img/home/tehsariwangi.jpg" alt="" /> -->
                                                         <div class="d-flex flex-column justify-content-center align-items-start mt-2">
                                                             <h5 class="transaction-game"><?= $w['NAME'] ?></h5>
-                                                            <!-- <h5 class="transaction-type">Sembako</h5> -->
                                                         </div>
                                                     </div>
                                                 </td>
@@ -48,12 +50,84 @@
                                                 </td>
                                                 </td>
                                                 <td class="action">
-                                                    <button type="button" data-toggle="modal" data-target="#modalEdit" class="btn btn-primary">Edit</button>
+                                                    <button type="button" data-toggle="modal" data-target="#modalEdit<?= $w['ID'] ?>" class="btn btn-primary">Edit</button>
                                                 </td>
                                                 <td class="action">
-                                                    <button type="button" data-toggle="modal" data-target="#modalDelete" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                                    <button type="button" data-toggle="modal" data-target="#modalDelete<?= $w['ID'] ?>" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                                 </td>
                                             </tr>
+                                            <!-- Modal Edit-->
+                                            <div class="modal fade" id="modalEdit<?= $w['ID'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLongTitle">Edit Wisata</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form method="POST" action="<?= base_url('wisata/editWisata'); ?>">
+                                                                <div class="form-row">
+                                                                    <div class="form-group col-md-12">
+                                                                        <label for="name">Full Name</label>
+                                                                        <input type="text" class="form-control" id="name" name="name" value="<?= $w['NAME'] ?>">
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-row">
+                                                                    <div class="form-group col-md-6">
+                                                                        <label for="ticket">Ticket</label>
+                                                                        <input type="text" class="form-control" name="ticket" value=<?= $w['TICKET_PRICE'] ?>>
+                                                                    </div>
+                                                                    <div class="form-group col-md-6">
+                                                                        <label for="quota">Kapasitas</label>
+                                                                        <input type="text" class="form-control" name="quota" value=<?= $w['QUOTA'] ?>>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-row">
+                                                                    <div class="form-group col-md-6">
+                                                                        <label for="inputState">Status</label>
+                                                                        <select name="active" class="form-control">
+                                                                            <option value="<?= $w['IS_ACTIVE'] ?>" style="display:none;"><?= $w['STATUS'] ?></option>
+                                                                            <option value="1">OPEN</option>
+                                                                            <option value="2">CLOSED</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group col-md-3">
+                                                                        <label for="id">Id</label>
+                                                                        <input type="text" class="form-control" name="id" value=<?= $w['ID'] ?> readonly>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                    <button class="btn btn-primary" type="submit">Edit Wisata</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Modal Delete-->
+                                            <div class="modal fade" id="modalDelete<?= $w['ID'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLongTitle">Delete Wisata</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            ...
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-danger">Delete</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         <?php endforeach; ?>
                                     </tbody>
                                 </table>
@@ -63,46 +137,7 @@
                 </div>
             </div>
         </div>
-        <!-- Modal Edit-->
-        <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Edit Wisata</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Modal Delete-->
-        <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Delete Wisata</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-danger">Delete</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <!-- Modal Add-->
         <div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -114,14 +149,40 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <form method="POST" action="<?= base_url('wisata/add'); ?>">
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="name">Full Name</label>
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Nama Wisata">
+
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="ticket">Ticket</label>
+                                    <input type="text" class="form-control" name="ticket" placeholder="Ticket">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="quota">Kapasitas</label>
+                                    <input type="text" class="form-control" name="quota" placeholder="Kapasitas">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputState">Status</label>
+                                    <select name="active" class="form-control">
+                                        <option value="1" selected>OPEN</option>
+                                        <option value="2">CLOSED</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button class="btn btn-primary" type="submit">Add Wisata</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>

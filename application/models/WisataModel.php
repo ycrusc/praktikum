@@ -18,10 +18,18 @@ class WisataModel extends CI_Model
         return $this->db->get('WISATA')->num_rows();
     }
 
+    public function getCountIdWisata()
+    {
+        $query = $this->db->query('SELECT MAX(ID) as ID FROM WISATA');
+        $row = $query->row();
+        $id = $row->ID;
+        return  $id;
+    }
+
     public function getAllWisataOverview()
     {
-        $query = "SELECT NAME, QUOTA, TICKET_PRICE, CASE WHEN IS_ACTIVE = 1 THEN 'OPEN'
-                ELSE 'CLOSE' END AS STATUS
+        $query = "SELECT ID, NAME, QUOTA, TICKET_PRICE, CASE WHEN IS_ACTIVE = 1 THEN 'OPEN'
+                ELSE 'CLOSE' END AS STATUS, IS_ACTIVE
                 FROM WISATA W";
         return $this->db->query($query)->result_array();
     }
@@ -30,5 +38,11 @@ class WisataModel extends CI_Model
     {
         $query = "SELECT MAX(ID) AS ID FROM WISATA W";
         return $this->db->query($query)->result_array();
+    }
+
+    public function deleteWisata($id)
+    {
+        $this->db->where('ID', $id);
+        return $this->db->delete('WISATA');
     }
 }

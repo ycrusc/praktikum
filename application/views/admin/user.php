@@ -10,6 +10,8 @@
         </div>
         <?= $this->session->flashdata('message'); ?>
         <?= $this->session->flashdata('delete'); ?>
+        <?= $this->session->flashdata('edit'); ?>
+        <?= $this->session->flashdata('failled'); ?>
         <div class="content">
             <div class="row">
                 <div class="col-12">
@@ -62,47 +64,48 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form method="POST" action="<?= base_url('user/add'); ?>">
+                                                            <form method="POST" action="<?= base_url('user/editUser'); ?>">
                                                                 <div class="form-row">
                                                                     <div class="form-group col-md-6">
-                                                                        <label for="inputEmail4">Full Name</label>
-                                                                        <input type="text" class="form-control" id="inputEmail4" placeholder=<?= $usr['FULL_NAME'] ?>>
+                                                                        <label for="full_name">Full Name</label>
+                                                                        <input type="text" class="form-control" name="full_name" value="<?= $usr['FULL_NAME'] ?>">
                                                                     </div>
                                                                     <div class="form-group col-md-6">
-                                                                        <label for="inputPassword4">User Name</label>
-                                                                        <input type="text" class="form-control" id="inputPassword4" placeholder=<?= $usr['USER_NAME'] ?>>
+                                                                        <label for="user_name">User Name</label>
+                                                                        <input type="text" class="form-control" name="user_name" value=<?= $usr['USER_NAME'] ?> readonly>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-row">
                                                                     <div class="form-group col-md-6">
-                                                                        <label for="inputEmail4">Email</label>
-                                                                        <input type="email" class="form-control" id="inputEmail4" placeholder=<?= $usr['E_MAIL'] ?>>
+                                                                        <label for="email">Email</label>
+                                                                        <input type="email" class="form-control" name="email" value=<?= $usr['E_MAIL'] ?> readonly>
                                                                     </div>
                                                                     <div class="form-group col-md-6">
-                                                                        <label for="inputPassword4">City</label>
-                                                                        <input type="text" class="form-control" id="inputPassword4" placeholder=<?= $usr['CITY'] ?>>
+                                                                        <label for="city">City</label>
+                                                                        <input type="text" class="form-control" name="city" value=<?= $usr['CITY'] ?>>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-row">
                                                                     <div class="form-group col-md-6">
-                                                                        <label for="inputEmail4">Phone Number</label>
-                                                                        <input type="text" class="form-control" id="inputEmail4" placeholder=<?= $usr['PHONE_NUMBER'] ?>>
+                                                                        <label for="phone">Phone Number</label>
+                                                                        <input type="text" class="form-control" name="phone" value=<?= $usr['PHONE_NUMBER'] ?>>
                                                                     </div>
                                                                     <div class="form-group col-md-4">
                                                                         <label for="inputState">Role</label>
-                                                                        <select id="inputState" class="form-control">
-                                                                            <option selected><?= $usr['DESCRIPTION'] ?></option>
-                                                                            <option>ADMIN</option>
-                                                                            <option>WISATAN</option>
+                                                                        <select name="role" class="form-control">
+                                                                            <option value="<?= $usr['ROLE_ID'] ?>" style="display:none;"><?= $usr['DESCRIPTION'] ?></option>
+                                                                            <?php foreach ($allRole as $key) : ?>
+                                                                                <option value="<?php echo $key['ID'] ?>"><?php echo $key['DESCRIPTION'] ?></option>
+                                                                            <?php endforeach ?>
                                                                         </select>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group col-md-4">
                                                                     <label for="inputState">Status</label>
-                                                                    <select id="inputState" class="form-control">
-                                                                        <option value="" disabled selected hidden><?= $usr['STATUS'] ?></option>
-                                                                        <option>ACTIVE</option>
-                                                                        <option>NON ACTIVE</option>
+                                                                    <select name="active" class="form-control">
+                                                                        <option value="<?= $usr['IS_ACTIVE'] ?>" style="display:none;"><?= $usr['STATUS'] ?></option>
+                                                                        <option value="1">ACTIVE</option>
+                                                                        <option value="2">NON ACTIVE</option>
                                                                     </select>
                                                                 </div>
                                                                 <div class="modal-footer">
@@ -163,7 +166,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="user_name">User Name</label>
-                                    <input type="text" class="form-control" name="user_name" value="<?= set_value('full_name'); ?>">
+                                    <input type="text" class="form-control" name="user_name" value="user_name">
                                 </div>
                             </div>
                             <div class="form-row">
@@ -191,22 +194,15 @@
                                     <label for="inputEmail4">Phone Number</label>
                                     <input type="text" class="form-control" name="phone" placeholder="Phone Number">
                                 </div>
-                                <!-- <div class="form-group col-md-4">
+                                <div class="form-group col-md-4">
                                     <label for="inputState">Role</label>
                                     <select id="inputState" class="form-control">
-                                        <option selected>Admin</option>
-                                        <option>Wisatawan</option>
+                                        <?php foreach ($allRole as $key) : ?>
+                                            <option value="<?php echo $key['ID'] ?>"><?php echo $key['DESCRIPTION'] ?></option>
+                                        <?php endforeach ?>
                                     </select>
-                                </div> -->
-                            </div>
-                            <!-- <div class="form-group">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                                    <label class="form-check-label" for="gridCheck">
-                                        Is Actice?
-                                    </label>
                                 </div>
-                            </div> -->
+                            </div>
                             <div class="modal-footer">
                                 <a class="btn btn-secondary" data-dismiss="modal">Close</a>
                                 <button class="btn btn-primary" type="submit">Add User</button>

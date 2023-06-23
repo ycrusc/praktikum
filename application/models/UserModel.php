@@ -19,7 +19,7 @@ class UserModel extends CI_Model
     public function getAllUsersOverview()
     {
         $query = "SELECT U.ID, FULL_NAME,CITY, PHONE_NUMBER, USER_NAME, E_MAIL, CASE WHEN IS_ACTIVE = 1 THEN 'ACTIVE' 
-                    ELSE 'NON ACTIVE' END AS STATUS, R.DESCRIPTION 
+                    ELSE 'NON ACTIVE' END AS STATUS, R.DESCRIPTION , R.ID AS ROLE_ID, IS_ACTIVE
                     FROM USERS U
                     JOIN ROLE R ON R.ID = U.ROLE_ID";
 

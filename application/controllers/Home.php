@@ -21,7 +21,7 @@ class Home extends CI_Controller
 
 
       $this->load->library('pagination');
-      $config['base_url'] = 'http://localhost/praktikum/home/index';
+      $config['base_url'] = 'http://localhost:8081/praktikum/home/index';
       $config['total_rows'] = $this->WisataModel->getCountAllWisata();
       $config['per_page'] = 6;
 
